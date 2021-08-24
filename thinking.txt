@@ -1,0 +1,49 @@
+What am I trying to do?
+
+Instead of rendering the array in the text field, I now need to isolate each emoji so that it can be given location information.
+
+I think this also means I need to define a different HTML element to contain it, so that each element can be positioned differently.
+
+This might be best accomplished with an object, so that the key value pairs are "emoji", "position info".
+
+emojiObject {
+  emoji1:"positionNumber",
+  emoji2: "positionNumber",
+  emoji3, "positionNumber"
+}
+
+So, whenever I generate a random Emoji, I also need to generate a random positionNumber and store that in the object as well.
+
+Then, I would want to render that object, pushing that location data in to the rendering function.
+
+But each emoji should get its OWN html element, so that it can have its own z index (get stacked up like a sticker). So how do I generate that? What is the format?
+
+var div = document.CreateElement(div(#)) - the # needs to increment once for every emoji in the object
+
+div.textContent = getRandomEmoji()
+
+document.body.appendChild(div)
+
+---------------
+
+Okay, so I changed the emoji object into an array. Now I need to use the format above and put it in the renderEmojis function. That's my next step.
+
+---------
+
+So, the emoji stickers work. Now I want to add:
+
+- sound effect each time sticker added
+  - bonus - slightly different sound effects for variety (2-3)
+- more detailed animation before each sticker hits (shadow before it lands)
+- sticker size varieties (the emoji can change with font size, but I'm not sure how to tie that to the size of the div... UNLESS you have a few set sizes, like, small, medium, and large; then you can trigger the appropriate div size for the font size :) smart)
+- DONE fix the overflow
+
+-----------
+
+7-29
+
+This just doesn't work. But that's okay. I have learned something that won't work, so now I can find something that WILL.
+
+The way that I'm positioning with percentages seems to work with the logo and columns and such, but NOT with positioning; the pieces slide around slightly, come apart, and just don't look like an intentional line.
+
+So I need to find a new way to handle that.

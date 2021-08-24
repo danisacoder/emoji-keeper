@@ -1,0 +1,43 @@
+// the html elements
+let pushBtn = document.getElementById("push-btn")
+let emojiContainer = document.getElementById("emoji-container")
+
+// the total emoji array and the current array
+let emojiArray = ["✌","😂","😝","😁","😱","👉","🙌","🍻","🔥","🌈","☀","🎈","🌹","💄","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","🍀","👀","🚗","🍎","💝","💙","👌","❤","😍","😉","😓","😳","💪","💩","🍸","🔑","💖","🌟","🎉","🌺","🎶","👠","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","💣","👃","👂","🍓","💘","💜","👊","💋","😘","😜","😵","🙏","👋","🚽","💃","💎","🚀","🌙","🎁","⛄","🌊","⛵","🏀","🎱","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲","🍉","💛","💚"]
+let currentEmoji = []
+
+// getting a random number so we can use it to refer to an array item
+function getRandomNum() {
+  let randomNum = Math.floor(Math.random() * emojiArray.length)
+  console.log(randomNum)
+  return randomNum
+}
+
+// use a number passed as a way to access the emoji from the array
+function getRandomEmoji(number) {
+  let randomEmoji = emojiArray[number]
+  console.log(randomEmoji)
+  return randomEmoji
+}
+
+// push the generated emoji into the currentArray
+function addEmojiToArray() {
+  let randomEmoji = getRandomEmoji(getRandomNum())
+  currentEmoji += randomEmoji
+  console.log(currentEmoji)
+}
+
+// display currentArray on the page
+function renderPage() {
+  emojiContainer.innerHTML = currentEmoji
+}
+
+pushBtn.addEventListener("click", function(){
+  addEmojiToArray()
+  renderPage()
+})
+
+//
+// function renderPage() {
+//   emojiContainer.textContent = currentEmoji
+// }

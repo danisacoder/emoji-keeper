@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  /* get rid of scroll bars */
+  overflow: hidden;
+  background: black;
+
+}
+
+h1 {
+  font-family: sans-serif;
+}
+
+.container {
+  background: lightblue;
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.notebook {
+  display: flex;
+  /* this is absolute so things can position relatively to it later */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  border: 1px solid black;
+  background: gray;
+  margin: 100px;
+  border-radius: 15px;
+  border: 1px solid green;
+}
+
+#emoji-container {
+  position: absolute;
+  border: 1px solid red;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sticker {
+  border: 1px solid yellow;
+  width: 20%;
+}
+/* the three columns of the notebook */
+
+.col1 {
+  background: #9896f1;
+  width: 2%;
+  border-radius: 15px 0 0 15px;
+}
+
+.col2 {
+  background: white;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+.col3 {
+  background: rgb(138,107,255);
+  background: linear-gradient(90deg, rgba(138,107,255,1) 0%, rgba(203,97,209,1) 65%);
+  width: 65%;
+  border-radius: 0 15px 15px 0;
+}
+
+/* the branding on the notebook flap */
+
+.sidelogo {
+  border: 1px solid red;
+  margin: auto;
+  height: 35%;
+  padding-right: 10px;
+  position: relative;
+  float: right;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* the four ad label rows */
+
+.row1 {
+  background: #FFF;
+  height: 10%;
+
+}
+
+.row2 {
+  background: #8ef6e4;
+  height: 15%;
+}
+
+.row3 {
+  background: #d59bf6;
+  height: 70%;
+}
+
+.row4 {
+  background: #8ef6e4;
+  height: 5%;
+}
+
+.clasp-top {
+  position: absolute;
+  width: 25%;
+  height: 25%;
+  box-shadow: 2px 0 1px -2px black;
+  transform: rotate(225deg);
+  border-radius: 0 15px 15px 0;
+  right: 0;
+  top: 4%;
+}
+
+.clasp-middle {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  box-shadow: 2px 1px 1px -2px black;
+  right: 29.75%;
+  top: 16%;
+
+}

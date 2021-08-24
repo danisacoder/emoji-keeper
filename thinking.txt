@@ -47,3 +47,12 @@ This just doesn't work. But that's okay. I have learned something that won't wor
 The way that I'm positioning with percentages seems to work with the logo and columns and such, but NOT with positioning; the pieces slide around slightly, come apart, and just don't look like an intentional line.
 
 So I need to find a new way to handle that.
+
+-----------
+
+8-24
+
+Back at it! Determining boundary percentages that won't break the page (slide the stickers off the notebook).
+
+horizontal: 1-85%
+top: 1-85%

@@ -39,12 +39,12 @@ function getRandomFontSize() {
 }
 
 function getRandomLeftValue() {
-  let randomNum = Math.floor(Math.random() * 500)
+  let randomNum = Math.floor(Math.random() * 85)
   return randomNum
 }
 
 function getRandomTopValue() {
-  let randomNum = (Math.floor(Math.random() * 500) + 200)
+  let randomNum = Math.floor(Math.random() * 85)
   return randomNum
 }
 
@@ -63,7 +63,7 @@ function getRandomScale() {
 // push the generated emoji, a random font size and z-index value into currentEmojis
 function addEmojiInfoToCurrentEmojis() {
   let randomEmoji = getRandomEmoji(getRandomEmojiNum())
-  zValue += 1
+  zValue += 2
   currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),zValue])
 }
 
@@ -78,7 +78,14 @@ function addEmojiInfoToCurrentEmojis() {
 function renderEmojis() {
   emojiContainer.innerHTML = ""
   for (let i = 0; i < currentEmojis.length; i++){
-    emojiContainer.innerHTML += `<div class="sticker" id="sticker${[i]}" style="position:absolute;left:40.5%;top:20%;font-size:70;">${currentEmojis[i][0]}</div>`
+    emojiContainer.innerHTML += `<div class="sticker" id="sticker${[i]}" style="
+      left:${currentEmojis[i][1]}%;
+      top:${currentEmojis[i][2]}%;
+      transform:rotate(${currentEmojis[i][3]}deg);
+      z-index:${currentEmojis[i][5]};
+      ">
+      ${currentEmojis[i][0]}
+      </div>`
   }
 }
 

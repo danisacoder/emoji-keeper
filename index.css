@@ -98,6 +98,16 @@ h1 {
 
 }
 
+.binder-size {
+  height: 85%;
+  width: 40%;
+  background-color: green;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  float: right;
+
+}
+
 .row2 {
   background: #8ef6e4;
   height: 15%;
@@ -173,7 +183,20 @@ h1 {
   /* background: pink; */
   height: 100%;
   width: 3%;
-
   height: 100%;
   border-radius: 15px;
+}
+
+.white-border-container {
+  position: absolute;
+  display: flex;
+}
+
+.white-border {
+  border: 2px solid white;
+  border-radius: 12px;
+  z-index: 5;
+  height: 95%;
+  width: 95%;
+  justify-content: center;
 }

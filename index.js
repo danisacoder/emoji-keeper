@@ -63,7 +63,7 @@ function getRandomScale() {
 // push the generated emoji, a random font size and z-index value into currentEmojis
 function addEmojiInfoToCurrentEmojis() {
   let randomEmoji = getRandomEmoji(getRandomEmojiNum())
-  zValue += 2
+  zValue += 50
   currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),zValue])
 }
 

@@ -135,6 +135,7 @@ body {
   height: 70%;
   text-align: center;
   padding: 0;
+  margin: 0;
 }
 
 .school-font {
@@ -142,23 +143,24 @@ body {
   font-size: 20px;
 }
 
-h3.school-font {
-  font-size: 200%;
+.row3 h3 {
+  font-size: 5vw;
+  border: 1px solid red;
+  padding: 0;
+  margin-top: 20%;
+}
+
+.row3 p {
+  font-size: 3vw;
+  border: 1px solid red;
+  padding: 0;
+  margin: 0;
 }
 
 .row4 {
   background: #8ef6e4;
   height: 5%;
 }
-
-h3 {
-  border: 1px solid red;
-}
-
-p {
-  border: 1px solid red;
-}
-
 
 .clasp-container {
   /* border: 1px solid red; */

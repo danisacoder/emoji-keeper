@@ -1,12 +1,9 @@
 body {
   margin: 0;
+  padding: 0;
   /* get rid of scroll bars */
   overflow: hidden;
   background: gray;
-}
-
-h1 {
-  font-family: sans-serif;
 }
 
 .container {
@@ -111,27 +108,57 @@ h1 {
 .binder-size {
   height: 85%;
   width: 40%;
-  background-color: green;
+  background-color: #8ef6e4;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   float: right;
+  right: 20px;
 
 }
 
 .row2 {
   background: #8ef6e4;
   height: 15%;
+  /* position: absolute; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.two-line-logo {
+  width: 70%;
+  height: 70%;
 }
 
 .row3 {
-  background: #d59bf6;
+  background: #FFF;
   height: 70%;
+  text-align: center;
+  padding: 0;
+}
+
+.school-font {
+  font-family: 'Schoolbell', cursive;
+  font-size: 20px;
+}
+
+h3.school-font {
+  font-size: 200%;
 }
 
 .row4 {
   background: #8ef6e4;
   height: 5%;
 }
+
+h3 {
+  border: 1px solid red;
+}
+
+p {
+  border: 1px solid red;
+}
+
 
 .clasp-container {
   /* border: 1px solid red; */

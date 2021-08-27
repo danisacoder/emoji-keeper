@@ -59,8 +59,26 @@ top: 1-85%
 
 The emojis need to shrink a bit to fit things like the "the wave" and other emojis fully on the sticker (which can also grow a bit).
 
+8-23
+
 - What is the MVP of this project? How do I know when it's done? What am I learning? What do I want to achieve?
 
 - Can I add an API to this for the Emojis instead of hard-coding?
 
-- 
+-----
+
+8-26-21
+
+Things to do:
+
+- research and implement emoji API
+- finish layout and design
+  - paper text and prices and such
+  - emoji-adding button placement and design
+  - lighter font weight for instructions
+- animation
+  - make the stickers look like they are "falling" from the sky or at least "landing" from above
+- sound
+  - adding sticker sound effect
+- mobile
+  - does it work? does it look good?

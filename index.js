@@ -68,19 +68,35 @@ function addEmojiInfoToCurrentEmojis() {
   currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),zValue])
 }
 
-//  this sticks the "stickers" down on the page with random locations and rotations
-// function renderEmojis() {
-//   emojiContainer.innerHTML = ""
-//   for (let i = 0; i < currentEmojis.length; i++){
-//     emojiContainer.innerHTML += `<div class="sticker" id="sticker${[i]}" style="box-shadow:0px 0px 1px;position:absolute;left:${currentEmojis[i][1]}px;top:${currentEmojis[i][2]}px;font-size:${currentEmojis[i][4]}px;transform:rotate(${currentEmojis[i][3]}deg);z-index:${currentEmojis[i][5]})">${currentEmojis[i][0]}</div>`
-//   }
-//}
+
 
 function renderEmojis() {
+  // clear the emojiContainer div 
   emojiContainer.innerHTML = ""
-  for (let i = 0; i < currentEmojis.length; i++){
-    if (i < currentEmojis.length - 1) {
+// iterate through the
+  // let i = 0;
+  // for (i = currentEmojis.length - 1; i >= 0; i--) {
+    
+  for (let i = 0; i < currentEmojis.length; i++) {
+
+    if (i === currentEmojis.length - 1) {
+    // most recently added sticker gets animated
     emojiContainer.innerHTML +=
+      `<div
+      class="sticker last-sticker"
+      id="sticker${[i]}"
+      style="
+      left:${currentEmojis[i][1]}%;
+      top:${currentEmojis[i][2]}%;
+      transform:rotate(${currentEmojis[i][3]}deg);
+      z-index:${currentEmojis[i][5]};
+      ">
+      ${currentEmojis[i][0]}
+      </div>`
+    } 
+    // every other sticker does not get animated
+    else {
+      emojiContainer.innerHTML +=
       `<div
       class="sticker"
       id="sticker${[i]}"
@@ -91,20 +107,10 @@ function renderEmojis() {
       z-index:${currentEmojis[i][5]};
       ">
       ${currentEmojis[i][0]}
-      </div>`} else {
-    emojiContainer.innerHTML +=
-      `<div
-      class="sticker newest-sticker"
-      id="sticker${[i]}"
-      style="
-      left:${currentEmojis[i][1]}%;
-      top:${currentEmojis[i][2]}%;
-      transform:rotate(${currentEmojis[i][3]}deg);
-      z-index:${currentEmojis[i][5]};
-      ">
-      ${currentEmojis[i][0]}
       </div>`
-      }
+
+    }
+
   }
 
 }

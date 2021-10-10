@@ -79,6 +79,23 @@ Things to do:
 - animation
   - make the stickers look like they are "falling" from the sky or at least "landing" from above
 - sound
-  - adding sticker sound effect
+  - adding sticker sound effectx
 - mobile
   - does it work? does it look good?
+
+-----------
+
+10-9-21
+
+Things to do:
+
+- change font sizes using vw (they get too large when the page gets wide)
+  - sticker
+  - row3 h3
+  - row3 p
+  - p.instructions
+  - .clasp-lip (the borders)
+- DONE make "clear" button more, uh, clear that you've clicked it (text doesn't change, stays the same color)
+- DONE use the stuff from the carousel to make the sticker animate (having one sticker be "active" class at a time)
+- different sticker sizes (probably tied to the view width thing - it'll be easier to randomize and adjust their size when I know what I'm using to size them in the first place)
+

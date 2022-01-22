@@ -1,9 +1,8 @@
 // --------------------------------------
 // ESTABLISHING THE HTML ELEMENTS AND VARIABLES
-let stickerBtn = document.getElementById("sticker-btn")
+// let notebook = document.getElementById("sticker-btn")
 let clearBtn = document.getElementById("clear-btn")
 let emojiContainer = document.getElementById("emoji-container")
-let stickers = document.querySelectorAll("sticker")
 let notebook = document.getElementById("notebook")
 // emojiContainer.style.position = "absolute"
 // emojiContainer.style.top = '15%';
@@ -20,7 +19,7 @@ let currentEmojis = []
 // POPULATING CURRENTEMOJIS ARRAY
 
 // getting a random number so we can use it to refer to an emojiArray item
-function getRandomEmojiNum() {
+function randomEmojiNum() {
   let randomNum = Math.floor(Math.random() * emojiArray.length)
   console.log(randomNum)
   return randomNum
@@ -63,8 +62,8 @@ function getRandomScale() {
 
 // push the generated emoji, a random font size and z-index value into currentEmojis
 function addEmojiInfoToCurrentEmojis() {
-  let randomEmoji = getRandomEmoji(getRandomEmojiNum())
-  zValue += 50
+  let randomEmoji = getRandomEmoji(randomEmojiNum())
+  zValue += 1
   currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),zValue])
 }
 
@@ -121,11 +120,34 @@ clearBtn.addEventListener("click", function(){
   console.log('clear!')
 })
 
-stickerBtn.addEventListener("click", function(){
+notebook.addEventListener("click", function(){
   addEmojiInfoToCurrentEmojis()
   renderEmojis()
+  setScaledEmojiFontSize()
   // pop.play()
   console.log(currentEmojis)
 })
 
 renderEmojis()
+
+function setScaledEmojiFontSize() {
+
+  let stickers = document.querySelectorAll(".sticker")
+  let notebookWidth = document.getElementById('notebook').offsetHeight
+  let emojiFontSize = notebookWidth * .1
+  
+  if (document.getElementsByClassName('sticker').length === 0) {
+    console.log('butts')
+  } else {
+      for (let i = 0; i < stickers.length; i++) {
+        console.log(stickers[i].classList)
+      }
+
+      console.log(emojiFontSize)
+  }
+
+}
+
+window.addEventListener("resize", setScaledEmojiFontSize)
+
+setScaledEmojiFontSize()

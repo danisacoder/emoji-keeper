@@ -12,7 +12,7 @@ let zValue = 0
 // the total emoji array and the current array
 let emojiArray = ["✌","😂","😝","😁","😱","👉","🙌","🍻","🔥","🌈","🎈","🌹","💄","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","🍀","👀","🚗","🍎","💝","💙","👌","❤","😍","😉","😓","😳","💪","💩","🍸","🔑","💖","🌟","🎉","🌺","🎶","👠","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","💣","👃","👂","🍓","💘","💜","👊","💋","😘","😜","😵","🙏","👋","🚽","💃","💎","🚀","🌙","🎁","⛄","🌊","⛵","🏀","🎱","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲","🍉","💛","💚"]
 
-// declare variable whose array will be diplayed on the page
+// declare array variable to contain generated emojis that will be diplayed on the page
 let currentEmojis = []
 
 // --------------------------------------
@@ -54,17 +54,18 @@ function getRandomRotation() {
 }
 
 // random scale number from 0.5 to 1.2 to change the sticker size
-function getRandomScale() {
-  let randomNum = Math.random() + 0.5
+function getRandomStickerScale() {
+  let randomNum = 17 + Math.floor(Math.random() * 3)
   console.log(randomNum)
   return randomNum
 }
 
 // push the generated emoji, a random font size and z-index value into currentEmojis
-function addEmojiInfoToCurrentEmojis() {
+function pushEmojiIntoArray() {
   let randomEmoji = getRandomEmoji(randomEmojiNum())
-  zValue += 1
-  currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),zValue])
+  let stickerZValue = 6
+  stickerZValue += 1
+  currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),stickerZValue, getRandomStickerScale()])
 }
 
 
@@ -72,9 +73,7 @@ function addEmojiInfoToCurrentEmojis() {
 function renderEmojis() {
   // clear the emojiContainer div 
   emojiContainer.innerHTML = ""
-// iterate through the
-  // let i = 0;
-  // for (i = currentEmojis.length - 1; i >= 0; i--) {
+// iterate through the emojiArray and 
     
   for (let i = 0; i < currentEmojis.length; i++) {
 
@@ -112,6 +111,7 @@ function renderEmojis() {
 
   }
 
+  setFontSizes()
 }
 
 clearBtn.addEventListener("click", function(){
@@ -121,33 +121,58 @@ clearBtn.addEventListener("click", function(){
 })
 
 notebook.addEventListener("click", function(){
-  addEmojiInfoToCurrentEmojis()
+  pushEmojiIntoArray()
   renderEmojis()
-  setScaledEmojiFontSize()
-  // pop.play()
   console.log(currentEmojis)
 })
 
 renderEmojis()
 
-function setScaledEmojiFontSize() {
+function setScaledFontSize(multiplier, selector) {
 
-  let stickers = document.querySelectorAll(".sticker")
-  let notebookWidth = document.getElementById('notebook').offsetHeight
-  let emojiFontSize = notebookWidth * .1
+  let pageItem = document.querySelectorAll(`.${selector}`)
+  let notebookWidth = document.getElementById('notebook').offsetWidth
+  let scaledFontSize = notebookWidth * multiplier
   
-  if (document.getElementsByClassName('sticker').length === 0) {
-    console.log('butts')
-  } else {
-      for (let i = 0; i < stickers.length; i++) {
-        console.log(stickers[i].classList)
+  if (pageItem.length === 0) {
+    } else {
+      for (let i = 0; i < pageItem.length; i++) {
+        pageItem[i].style.fontSize = `${scaledFontSize}px`
       }
 
-      console.log(emojiFontSize)
+      // console.log(emojiFontSize) 
   }
 
 }
 
-window.addEventListener("resize", setScaledEmojiFontSize)
 
-setScaledEmojiFontSize()
+
+function setFontSizes() {
+  // emoji font size
+  // setScaledFontSize(`${currentEmojis[i][6]}`, 'sticker')
+  // A perfect place font size
+  setScaledFontSize(.07, 'notebook-header')
+  // to store your emoji collection font size
+  setScaledFontSize(.035, 'notebook-body')
+  // instructions font size
+  setScaledFontSize(.03, 'notebook-instructions')
+}
+
+
+
+// list of all selectors with vw font sizes:
+// body
+// h3
+// .sticker
+// @keyframes sticker-squish
+// .row h3
+// .row p
+// p.instructions
+
+
+window.addEventListener("resize", setFontSizes)
+
+// document.querySelector('.sticker-container').addEventListener("click", function() {
+//   console.log('sticker check')
+// })
+

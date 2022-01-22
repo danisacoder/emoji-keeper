@@ -143,10 +143,10 @@ h3 {
 
 @keyframes sticker-squish {
   from {
-    width: 12vw;
+    width: 17%;
   }
   to {
-    width: 13vw;
+    width: 18%;
   }
 }
 
@@ -257,7 +257,7 @@ h3 {
 }
 
 .row3 h3 {
-  font-size: 5vw;
+  /* font-size: 5vw; */
   /* border: 1px solid red; */
   padding: 0;
   margin-top: 20%;
@@ -266,14 +266,14 @@ h3 {
 
 .row3 p {
   /* border: 1px solid red; */
-  font-size: 3vw;
+  /* font-size: 3vw; */
   margin-top: 2%;
   font-weight: 200;
 }
 
 p.instructions {
   margin: 35% 10%;
-  font-size: 2vw;
+  /* font-size: 2vw; */
 }
 
 .row4 {
@@ -337,19 +337,3 @@ p.instructions {
   width: 93%;
   height: 95%;
 }
-
-/*.clasp-lip-shadow-container {
-  width: 100%;
-  height: 100%;
-   border: 1px solid red;
-  position: absolute;
-  display: flex;
-}*/
-
-/*.clasp-lip-shadow {
-width: 38%;
-border: 1px solid blue;
-border-right: 20vw solid rgba(81,65,143,1);
-border-bottom: 12vw solid transparent;
-border-top: 12vw solid transparent;
-}*/

@@ -39,12 +39,12 @@ function getRandomFontSize() {
 }
 
 function getRandomLeftValue() {
-  let randomNum = Math.floor(Math.random() * 85)
+  let randomNum = Math.floor(Math.random() * 80 + 1)
   return randomNum
 }
 
 function getRandomTopValue() {
-  let randomNum = Math.floor(Math.random() * 85)
+  let randomNum = Math.floor(Math.random() * 82) + 1
   return randomNum
 }
 
@@ -55,7 +55,7 @@ function getRandomRotation() {
 
 // random scale number from 0.5 to 1.2 to change the sticker size
 function getRandomStickerScale() {
-  let randomNum = 17 + Math.floor(Math.random() * 3)
+  let randomNum = 12 + Math.floor(Math.random() * 8)
   console.log(randomNum)
   return randomNum
 }
@@ -63,9 +63,7 @@ function getRandomStickerScale() {
 // push the generated emoji, a random font size and z-index value into currentEmojis
 function pushEmojiIntoArray() {
   let randomEmoji = getRandomEmoji(randomEmojiNum())
-  let stickerZValue = 6
-  stickerZValue += 1
-  currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(),stickerZValue, getRandomStickerScale()])
+  currentEmojis.push([randomEmoji,getRandomLeftValue(),getRandomTopValue(),getRandomRotation(),getRandomFontSize(), getRandomStickerScale()])
 }
 
 
@@ -73,45 +71,57 @@ function pushEmojiIntoArray() {
 function renderEmojis() {
   // clear the emojiContainer div 
   emojiContainer.innerHTML = ""
-// iterate through the emojiArray and 
+// iterate through the emojiArray and draw the stickers
     
   for (let i = 0; i < currentEmojis.length; i++) {
 
+      // create a div
+      let node = document.createElement('div')
+
+      // add classes to the divS
+      node.className = 'sticker'
+      
+      // add id to the div
+      node.setAttribute('id', `sticker${[i]}`)
+
+      // add left value to the div
+      node.style.left = `${currentEmojis[i][1]}%`
+
+      // add top value to the div
+      node.style.top = `${currentEmojis[i][2]}%`
+
+      // rotate the sticker div
+      node.style.transform = `rotate(${currentEmojis[i][3]}deg)`
+
+      // add z-index to the div
+      // node.style.zIndex = `${currentEmojis[i][5]}`
+
+      // generate the emoji text
+      let textNode = document.createTextNode(`${currentEmojis[i][0]}`)
+
+      // set the sticker scale
+      node.style.width = `${currentEmojis[i][5]}%`
+      node.style.height = `${currentEmojis[i][5]}%`
+
+      // set font size of emoji
+      // let emojiFontSize = ${currentEmojis[i][6] * 4.8}
+
+      // append the emoji text to the sticker
+      node.appendChild(textNode)
+
+      // append the sticker to the DOM
+      emojiContainer.appendChild(node)
+
     if (i === currentEmojis.length - 1) {
-    // most recently added sticker gets animated
-    emojiContainer.innerHTML +=
-      `<div
-      class="sticker last-sticker"
-      id="sticker${[i]}"
-      style="
-      left:${currentEmojis[i][1]}%;
-      top:${currentEmojis[i][2]}%;
-      transform:rotate(${currentEmojis[i][3]}deg);
-      z-index:${currentEmojis[i][5]};
-      ">
-      ${currentEmojis[i][0]}
-      </div>`
-    } 
-    // every other sticker does not get animated
-    else {
-      emojiContainer.innerHTML +=
-      `<div
-      class="sticker"
-      id="sticker${[i]}"
-      style="
-      left:${currentEmojis[i][1]}%;
-      top:${currentEmojis[i][2]}%;
-      transform:rotate(${currentEmojis[i][3]}deg);
-      z-index:${currentEmojis[i][5]};
-      ">
-      ${currentEmojis[i][0]}
-      </div>`
+    
+      // add animation class to latest sticker
+      node.className = 'sticker last-sticker'
 
     }
 
   }
 
-  setFontSizes()
+  scaleItems()
 }
 
 clearBtn.addEventListener("click", function(){
@@ -128,37 +138,51 @@ notebook.addEventListener("click", function(){
 
 renderEmojis()
 
-function setScaledFontSize(multiplier, selector) {
+function setScaledItem(factor, selector) {
 
   let pageItem = document.querySelectorAll(`.${selector}`)
   let notebookWidth = document.getElementById('notebook').offsetWidth
-  let scaledFontSize = notebookWidth * multiplier
+  let scaledSize = notebookWidth * factor
+  // console.log(notebookWidth)
   
   if (pageItem.length === 0) {
     } else {
       for (let i = 0; i < pageItem.length; i++) {
-        pageItem[i].style.fontSize = `${scaledFontSize}px`
+        pageItem[i].style.fontSize = `${scaledSize}px`
       }
 
-      // console.log(emojiFontSize) 
+      // console.log(scaledFontSize) 
   }
 
+  if (selector === 'sticker') {
+    for (let i = 0; i < pageItem.length; i++) {
+      let scaledStickerSize = notebookWidth * `.${currentEmojis[i][5]}` * factor  
+      pageItem[i].style.fontSize = `${scaledStickerSize}px`
+    }
+  }
 }
 
 
 
-function setFontSizes() {
+function scaleItems() {
+
   // emoji font size
-  // setScaledFontSize(`${currentEmojis[i][6]}`, 'sticker')
+  setScaledItem(.6, 'sticker')
   // A perfect place font size
-  setScaledFontSize(.07, 'notebook-header')
+  setScaledItem(.07, 'notebook-header')
   // to store your emoji collection font size
-  setScaledFontSize(.035, 'notebook-body')
+  setScaledItem(.035, 'notebook-body')
   // instructions font size
-  setScaledFontSize(.03, 'notebook-instructions')
+  setScaledItem(.03, 'notebook-instructions')
 }
 
-
+// function setEmojiFontSize() {
+//   let stickers = document.querySelectorAll('.sticker')
+//   for (let i = 0; i < stickers.length; i++) {
+//     let node = document.getElementById(`sticker${[i]}`)
+//      node.style.fontSize = `${currentEmojis[i][6] * 4.6}`
+//   }
+// }
 
 // list of all selectors with vw font sizes:
 // body
@@ -170,7 +194,7 @@ function setFontSizes() {
 // p.instructions
 
 
-window.addEventListener("resize", setFontSizes)
+window.addEventListener("resize", scaleItems)
 
 // document.querySelector('.sticker-container').addEventListener("click", function() {
 //   console.log('sticker check')
